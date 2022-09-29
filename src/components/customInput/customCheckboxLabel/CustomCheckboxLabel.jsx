@@ -1,28 +1,28 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import './CustomRadio.css';
+import './CustomCheckboxLabel.css';
 
-const CustomRadio = (props) => {
+const CustomCheckboxLabel = (props) => {
     const { value, checked, label, id, name, onChange } = props;
 
     return (
         <>
-            <span className="custom-radio-container">
-                <input className="custom-radio-input" onChange={(e)=>{onChange(e); console.log(e)}} type="radio" name={name} id={id ? id : label} value={value} checked={checked} />
+            <span className="custom-checkbox-container">
+                <input className="custom-checkbox-input" onChange={onChange} type="checkbox" name={name} id={id ? id : label} value={value} checked={checked} />
                 <label htmlFor={id ? id : label}>{label}</label>
             </span>
         </>
     )
 }
 
-CustomRadio.propTypes = {
+CustomCheckboxLabel.propTypes = {
     value: PropTypes.string.isRequired,
     checked: PropTypes.bool,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     id: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func.isRequired
 }
 
-export default memo(CustomRadio);
+export default memo(CustomCheckboxLabel);
