@@ -85,6 +85,8 @@ label {
 
 .label-class {
   margin-left: 12px;
+  margin-top: 10px;
+  line-height: 17px;
 }
 
 /* ***************************************** */

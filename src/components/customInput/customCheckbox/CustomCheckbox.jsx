@@ -9,9 +9,9 @@ const CustomCheckbox = (props) => {
     <span>
       {/* <input class="checkbox-effect checkbox-effect-1" id="make-bed-1" type="checkbox" value="make-bed-1" name="make-bed-1"/>
     <label for="make-bed-1"></label> */}
-      <input className="checkbox-input" type="checkbox" id="check1" />
-      <label htmlFor="check1" class="label-class">
-        Custom 1
+      <input className="checkbox-input" checked={checked} value={value} type="checkbox" id={id? id: label} name={name} onChange={onChange}/>
+      <label htmlFor={id? id: label} className="label-class" >
+        {/* Custom 1 */}
       </label>
     </span>
     // <label class="custom-checkbox-container">
