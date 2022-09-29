@@ -85,8 +85,11 @@ label {
 
 .label-class {
   margin-left: 12px;
-  margin-top: 10px;
-  line-height: 17px;
+  text-align: left;
+  font: normal normal 600 14px/17px Inter;
+  letter-spacing: 0px;
+  color: #030e46;
+  opacity: 1;
 }
 
 /* ***************************************** */

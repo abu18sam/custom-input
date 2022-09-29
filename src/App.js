@@ -2,22 +2,59 @@
 import "./App.css";
 import CustomCheckboxLabel from "./components/customInput/customCheckboxLabel/CustomCheckboxLabel";
 import CustomRadio from "./components/customInput/customRadio/CustomRadio";
-import CustomCheckbox from "./components/customInput/customCheckbox/CustomCheckbox";
+import CustomCheckbox, {
+  CustomCheckboxGroup,
+} from "./components/customInput/customCheckbox/CustomCheckbox";
+
+const checkboxList = [
+  {
+    value: "Regular",
+    label: "Regular",
+    id: 1,
+    checked: true,
+  },
+  {
+    value: "Carnival",
+    label: "Carnival",
+    id: 2,
+  },
+  {
+    value: "House Ads",
+    label: "House Ads",
+    id: 3,
+  },
+];
 
 function App() {
   return (
     <div className="App">
       <div style={{ margin: "auto", width: "100vw", height: "100px" }}>
-        <CustomCheckbox
-          value="Checkbox 1"
-          label="Hi"
-          name="category"
+        <p>Checkbox</p>
+        <div
+          //   onChange={(e) => {
+          //     console.log(e.target.value);
+          //     console.log(e.target.name);
+          //     console.log(e.target.checked);
+          //   }}
+          style={{ textAlign: "left", paddingLeft: "5px" }}
+        >
+          <CustomCheckboxGroup
+            checkboxList={checkboxList}
+            getSelected={(list) => console.log(list)}
+          />
+        </div>
+
+        {/* <CustomCheckbox
+          value="Regular"
+          label="Regular"
+          name="type"
           onChange={(e) => {
             console.log(e.target.value);
             console.log(e.target.name);
             console.log(e.target.checked);
           }}
         />
+         */}
       </div>
       {/* <div style={{ margin: "auto", width: "100vw", height: "100px" }}>
         </CustomCheckboxLabel></CustomCheckbox></CustomCheckboxLabel></CustomCheckbox>

@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import "./CustomCheckbox.css";
@@ -43,7 +43,49 @@ CustomCheckbox.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default memo(CustomCheckbox);
+
+export const CustomCheckboxGroup = memo((props) => {
+  const { checkboxList, getSelected } = props;
+
+  const handleChange = useCallback((e) => {
+    const { value, name, checked, id } = e.target;
+    if (getSelected) {
+      getSelected({ value, name, checked, id });
+    }
+  }, []);
+
+  return (
+    <div onChange={handleChange}>
+      {checkboxList.map((checkboxItem, index) => {
+        return (
+          <div>
+            <CustomCheckbox
+              key={`${JSON.stringify(checkboxItem)}_${index}`}
+              value={checkboxItem.value}
+              label={checkboxItem.label}
+              name="type"
+              id={checkboxItem.id}
+              checked={checkboxItem.checked}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+});
+
+CustomCheckboxGroup.propTypes = {
+  checkboxList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      value: PropTypes.string.isRequired,
+      checked: PropTypes.bool,
+      label: PropTypes.string,
+    })
+  ),
+  getSelected: PropTypes.func,
+};
