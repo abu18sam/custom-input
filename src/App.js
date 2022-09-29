@@ -10,9 +10,11 @@ function App() {
       <div style={{ margin: "auto", width: "100vw", height: "100px" }}>
         <CustomCheckbox
           value="Checkbox 1"
-          label=""
+          label="Hi"
+          name="category"
           onChange={(e) => {
             console.log(e.target.value);
+            console.log(e.target.name);
             console.log(e.target.checked);
           }}
         />
