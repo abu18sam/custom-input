@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-radio-container {
+    padding: 2px 5px;
+}
+
+.custom-radio-input[type=radio] {
+    display:none;
+}
+
+.custom-radio-input[type=radio] + label {
+    display:inline-block;
+    padding: 0 0 0 29px;
+    background:url('/public/images/inputs/checkbox_unchecked.svg') no-repeat;
+    background-size: 17px;
+    line-height: 21px;
+    color: #030e46;
+    font: normal normal 600 14px/17px Inter;
+}
+
+.custom-radio-input[type=radio]:checked + label {
+    background:url('/public/images/inputs/checkbox_checked.svg') no-repeat;
+    padding: 0 0 0 29px;
+    display:inline-block;
+    background-size: 17px;
+    line-height: 21px;
+}

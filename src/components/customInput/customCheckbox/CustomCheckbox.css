@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-checkbox-container {
+}
+
+.custom-checkbox-input[type=checkbox] {
+    display:none;
+}
+
+.custom-checkbox-input[type=checkbox] + label {
+    display:inline-block;
+    padding: 0 0 0 29px;
+    background:url('/public/images/inputs/checkbox_unchecked.svg') no-repeat;
+    background-size: 17px;
+    line-height: 21px;
+    color: #030e46;
+    font: normal normal 600 14px/17px Inter;
+}
+
+.custom-checkbox-input[type=checkbox]:checked + label {
+    background:url('/public/images/inputs/checkbox_checked.svg') no-repeat;
+    padding: 0 0 0 29px;
+    display:inline-block;
+    background-size: 17px;
+    line-height: 21px;
+}
