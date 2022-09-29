@@ -6,14 +6,14 @@ import "./CustomCheckbox.css";
 const CustomCheckbox = (props) => {
   const { value, checked, label, id, name, onChange } = props;
   return (
-    <>
+    <span>
       {/* <input class="checkbox-effect checkbox-effect-1" id="make-bed-1" type="checkbox" value="make-bed-1" name="make-bed-1"/>
     <label for="make-bed-1"></label> */}
       <input className="checkbox-input" type="checkbox" id="check1" />
       <label htmlFor="check1" class="label-class">
         Custom 1
       </label>
-    </>
+    </span>
     // <label class="custom-checkbox-container">
     //   {label}
     //   <input
