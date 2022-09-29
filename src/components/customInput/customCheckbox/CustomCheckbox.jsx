@@ -1,28 +1,41 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
-import './CustomCheckbox.css';
+import "./CustomCheckbox.css";
 
-const CustomCheckboxLabel = (props) => {
-    const { value, checked, label, id, name, onChange } = props;
+const CustomCheckbox = (props) => {
+  const { value, checked, label, id, name, onChange } = props;
+  return (
+    <>
+      {/* <input class="checkbox-effect checkbox-effect-1" id="make-bed-1" type="checkbox" value="make-bed-1" name="make-bed-1"/>
+    <label for="make-bed-1"></label> */}
+      <input className="checkbox-input" type="checkbox" id="check1" />
+      <label htmlFor="check1" class="label-class">
+        Custom 1
+      </label>
+    </>
+    // <label class="custom-checkbox-container">
+    //   {label}
+    //   <input
+    //     type="checkbox"
+    //     checked={checked}
+    //     value={value}
+    //     onChange={onChange}
+    //     id={id}
+    //     name={name}
+    //   />
+    //   <span class="checkmark"></span>
+    // </label>
+  );
+};
 
-    return (
-        <>
-            <span className="custom-checkbox-container">
-                <input className="custom-checkbox-input" onChange={onChange} type="checkbox" name={name} id={id ? id : label} value={value} checked={checked} />
-                <label htmlFor={id ? id : label}>{label}</label>
-            </span>
-        </>
-    )
-}
+CustomCheckbox.propTypes = {
+  value: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+  label: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
 
-CustomCheckboxLabel.propTypes = {
-    value: PropTypes.string.isRequired,
-    checked: PropTypes.bool,
-    label: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    onChange: PropTypes.func.isRequired
-}
-
-export default memo(CustomCheckboxLabel);
+export default memo(CustomCheckbox);
