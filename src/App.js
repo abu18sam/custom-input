@@ -23,6 +23,11 @@ const checkboxList = [
     label: "House Ads",
     id: 3,
   },
+  {
+    value: "Website Ads",
+    label: "Website Ads",
+    id: 4,
+  },
 ];
 
 function App() {
@@ -32,11 +37,6 @@ function App() {
     (item) => {
       try {
         console.log("item === ", item);
-        setChecksList((state) => {
-          let ind = state.findIndex((x) => String(x.id) === item.id);
-          state[ind] = { ...state[ind], checked: item.checked };
-          return state;
-        });
       } catch (error) {
         console.log(error);
       }
@@ -44,23 +44,26 @@ function App() {
     [setChecksList]
   );
 
+  const handleSubmit = useCallback(() => {
+    let list = checksList.filter((x) => x.checked).map((item) => item.value);
+    console.log("list === ", list);
+  }, [checksList]);
+
   return (
     <div className="App">
       <div style={{ margin: "auto", width: "100vw", height: "100px" }}>
         <p>Checkbox</p>
-        <div
-          //   onChange={(e) => {
-          //     console.log(e.target.value);
-          //     console.log(e.target.name);
-          //     console.log(e.target.checked);
-          //   }}
-          style={{ textAlign: "left", paddingLeft: "5px" }}
-        >
+        <div style={{ textAlign: "left", paddingLeft: "5px" }}>
           <CustomCheckboxGroup
             checkboxList={checksList}
             getSelectedItem={getSelectedItem}
           />
         </div>
+
+        <button onClick={handleSubmit}>Apply</button>
+        <br />
+        <br />
+        <br />
 
         {/* <CustomCheckbox
           value="Regular"
@@ -95,7 +98,7 @@ function App() {
         onChange={(e) => console.log(e.target.value)}
       >
         <p>Radio</p>
-        <CustomRadio
+        {/* <CustomRadio
           value={"Name1"}
           name="radio1"
           label={"Custom 1"}
@@ -107,7 +110,7 @@ function App() {
           label={"Custom 2"}
           checked={true}
           onChange={(e) => console.log(e.target.value)}
-        />
+        /> */}
       </div>
     </div>
   );

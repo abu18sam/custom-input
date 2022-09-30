@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback } from "react";
 import PropTypes from "prop-types";
 
 import "./CustomCheckbox.css";
@@ -7,8 +7,6 @@ const CustomCheckbox = (props) => {
   const { value, checked, label, id, name, onChange } = props;
   return (
     <span>
-      {/* <input class="checkbox-effect checkbox-effect-1" id="make-bed-1" type="checkbox" value="make-bed-1" name="make-bed-1"/>
-    <label for="make-bed-1"></label> */}
       <input
         key={id ? id : label}
         className="checkbox-input"
@@ -23,18 +21,6 @@ const CustomCheckbox = (props) => {
         {label}
       </label>
     </span>
-    // <label class="custom-checkbox-container">
-    //   {label}
-    //   <input
-    //     type="checkbox"
-    //     checked={checked}
-    //     value={value}
-    //     onChange={onChange}
-    //     id={id}
-    //     name={name}
-    //   />
-    //   <span class="checkmark"></span>
-    // </label>
   );
 };
 
