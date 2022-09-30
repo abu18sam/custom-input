@@ -34,10 +34,7 @@ function App() {
         console.log("item === ", item);
         setChecksList((state) => {
           let ind = state.findIndex((x) => String(x.id) === item.id);
-          console.log("ind === ", ind, state[0]?.id);
-          // state[ind]["checked"] = item.checked;
           state[ind] = { ...state[ind], checked: item.checked };
-          console.log("state === ", state);
           return state;
         });
       } catch (error) {
