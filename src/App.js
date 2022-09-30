@@ -97,21 +97,36 @@ function App() {
         
       </div> */}
       <div>
-        <button type="button" onClick={()=>{setShowModal(true)}}>Click here to Show Modal</button>
+        <button
+          type="button"
+          style={{ color: "green" }}
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
+          Click here to Show Modal
+        </button>
         <CustomModal
           title={"Are you sure?"}
-          description={"The changes made on the details are not saved. Please confirm if you want to continue."}
+          description={
+            "The changes made on the details are not saved. Please confirm if you want to continue."
+          }
           successButtonLabel={"Confirm"}
           resetButtonLabel={"Cancel"}
           showModal={showModal}
-          successButtonClick={() => {console.log("confirm clicked"); setShowModal(false);}}
-          resetButtonClick={() => {console.log("cancel clicked")}}
-          toggle={(state)=>setShowModal(state)}
+          successButtonClick={() => {
+            console.log("confirm clicked");
+            setShowModal(false);
+          }}
+          resetButtonClick={() => {
+            console.log("cancel clicked");
+          }}
+          toggle={(state) => setShowModal(state)}
         />
       </div>
 
-      <br/>
-      <br/>
+      <br />
+      <br />
 
       <div
         style={{ margin: "auto", width: "100vw", height: "100px" }}
