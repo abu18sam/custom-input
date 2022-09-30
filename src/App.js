@@ -6,6 +6,7 @@ import CustomRadio from "./components/customInput/customRadio/CustomRadio";
 import CustomCheckbox, {
   CustomCheckboxGroup,
 } from "./components/customInput/customCheckbox/CustomCheckbox";
+import CustomModal from "./components/customModal/CustomModal";
 
 const checkboxList = [
   {
@@ -32,6 +33,8 @@ const checkboxList = [
 
 function App() {
   const [checksList, setChecksList] = useState([...checkboxList]);
+
+  const [showModal, setShowModal] = useState(false);
 
   const getSelectedItem = useCallback(
     (item) => {
@@ -60,7 +63,7 @@ function App() {
           />
         </div>
 
-        <button onClick={handleSubmit}>Apply</button>
+        {/* <button onClick={handleSubmit}>Apply</button> */}
         <br />
         <br />
         <br />
@@ -93,6 +96,23 @@ function App() {
         />
         
       </div> */}
+      <div>
+        <button type="button" onClick={()=>{setShowModal(true)}}>Click here to Show Modal</button>
+        <CustomModal
+          title={"Are you sure?"}
+          description={"The changes made on the details are not saved. Please confirm if you want to continue."}
+          successButtonLabel={"Confirm"}
+          resetButtonLabel={"Cancel"}
+          showModal={showModal}
+          successButtonClick={() => {console.log("confirm clicked"); setShowModal(false);}}
+          resetButtonClick={() => {console.log("cancel clicked")}}
+          toggle={(state)=>setShowModal(state)}
+        />
+      </div>
+
+      <br/>
+      <br/>
+
       <div
         style={{ margin: "auto", width: "100vw", height: "100px" }}
         onChange={(e) => console.log(e.target.value)}
