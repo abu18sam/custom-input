@@ -10,6 +10,7 @@ const CustomCheckbox = (props) => {
       {/* <input class="checkbox-effect checkbox-effect-1" id="make-bed-1" type="checkbox" value="make-bed-1" name="make-bed-1"/>
     <label for="make-bed-1"></label> */}
       <input
+        key={id ? id : label}
         className="checkbox-input"
         checked={checked}
         value={value}
@@ -49,25 +50,28 @@ CustomCheckbox.propTypes = {
 export default memo(CustomCheckbox);
 
 export const CustomCheckboxGroup = memo((props) => {
-  const { checkboxList, getSelected } = props;
+  const { checkboxList, getSelectedItem, checkboxesName } = props;
+
+  console.log("checkboxList == ", checkboxList);
 
   const handleChange = useCallback((e) => {
     const { value, name, checked, id } = e.target;
-    if (getSelected) {
-      getSelected({ value, name, checked, id });
+    if (getSelectedItem) {
+      getSelectedItem({ value, name, checked, id });
     }
   }, []);
 
   return (
     <div onChange={handleChange}>
       {checkboxList.map((checkboxItem, index) => {
+        console.log("key = ", `${JSON.stringify(checkboxItem)}_${index}`);
         return (
           <div>
             <CustomCheckbox
               key={`${JSON.stringify(checkboxItem)}_${index}`}
               value={checkboxItem.value}
               label={checkboxItem.label}
-              name="type"
+              name={checkboxesName? checkboxesName: checkboxItem.name? checkboxItem.name : "checkbox"}
               id={checkboxItem.id}
               checked={checkboxItem.checked}
             />
@@ -87,5 +91,6 @@ CustomCheckboxGroup.propTypes = {
       label: PropTypes.string,
     })
   ),
-  getSelected: PropTypes.func,
+  getSelectedItem: PropTypes.func,
+  checkboxesName: PropTypes.string
 };

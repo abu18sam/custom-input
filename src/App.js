@@ -1,4 +1,5 @@
 // import logo from "./logo.svg";
+import { useCallback, useState } from "react";
 import "./App.css";
 import CustomCheckboxLabel from "./components/customInput/customCheckboxLabel/CustomCheckboxLabel";
 import CustomRadio from "./components/customInput/customRadio/CustomRadio";
@@ -11,7 +12,6 @@ const checkboxList = [
     value: "Regular",
     label: "Regular",
     id: 1,
-    checked: true,
   },
   {
     value: "Carnival",
@@ -26,6 +26,27 @@ const checkboxList = [
 ];
 
 function App() {
+  const [checksList, setChecksList] = useState([...checkboxList]);
+
+  const getSelectedItem = useCallback(
+    (item) => {
+      try {
+        console.log("item === ", item);
+        setChecksList((state) => {
+          let ind = state.findIndex((x) => String(x.id) === item.id);
+          console.log("ind === ", ind, state[0]?.id);
+          // state[ind]["checked"] = item.checked;
+          state[ind] = { ...state[ind], checked: item.checked };
+          console.log("state === ", state);
+          return state;
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [setChecksList]
+  );
+
   return (
     <div className="App">
       <div style={{ margin: "auto", width: "100vw", height: "100px" }}>
@@ -39,8 +60,8 @@ function App() {
           style={{ textAlign: "left", paddingLeft: "5px" }}
         >
           <CustomCheckboxGroup
-            checkboxList={checkboxList}
-            getSelected={(list) => console.log(list)}
+            checkboxList={checksList}
+            getSelectedItem={getSelectedItem}
           />
         </div>
 
