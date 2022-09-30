@@ -52,8 +52,6 @@ export default memo(CustomCheckbox);
 export const CustomCheckboxGroup = memo((props) => {
   const { checkboxList, getSelectedItem, checkboxesName } = props;
 
-  console.log("checkboxList == ", checkboxList);
-
   const handleChange = useCallback((e) => {
     const { value, name, checked, id } = e.target;
     if (getSelectedItem) {
@@ -64,14 +62,19 @@ export const CustomCheckboxGroup = memo((props) => {
   return (
     <div onChange={handleChange}>
       {checkboxList.map((checkboxItem, index) => {
-        console.log("key = ", `${JSON.stringify(checkboxItem)}_${index}`);
         return (
           <div>
             <CustomCheckbox
               key={`${JSON.stringify(checkboxItem)}_${index}`}
               value={checkboxItem.value}
               label={checkboxItem.label}
-              name={checkboxesName? checkboxesName: checkboxItem.name? checkboxItem.name : "checkbox"}
+              name={
+                checkboxesName
+                  ? checkboxesName
+                  : checkboxItem.name
+                  ? checkboxItem.name
+                  : "checkbox"
+              }
               id={checkboxItem.id}
               checked={checkboxItem.checked}
             />
@@ -92,5 +95,5 @@ CustomCheckboxGroup.propTypes = {
     })
   ),
   getSelectedItem: PropTypes.func,
-  checkboxesName: PropTypes.string
+  checkboxesName: PropTypes.string,
 };
