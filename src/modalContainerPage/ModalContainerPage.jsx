@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 // import BaseModal from "../components/baseModal/BaseModal";
 
@@ -27,26 +27,27 @@ import HeadingAndActionsModal from "../components/headingAndActionsModal/Heading
 //   );
 // };
 
-const ModalBody = () => {
-  return (
-    <div>
-      <p>Hi this is modal body. Replace with your jsx element</p>
-    </div>
-  );
-};
+// const ModalBody = () => {
+//   return (
+//     <div>
+//       <p>Hi this is modal body. Replace with your jsx element</p>
+//     </div>
+//   );
+// };
 
 const ModalContainerPage = () => {
   const [showModal, setShowModal] = useState(false);
 
+  const [showAddCampaignModal, setShowCampaignModal] = useState(false);
+
   const onClickResetBtn = () => {
     console.log("Reset Clicked === ");
-    setShowModal(false);
   };
 
-  const onClickSuccessBtn = () => {
+  const onClickSuccessBtn = useCallback(() => {
     console.log("success clicked");
     setShowModal(false);
-  };
+  },[]);
 
   // const ModalHeader = () => {
   //   return (
@@ -59,26 +60,59 @@ const ModalContainerPage = () => {
   return (
     <>
       <div>
-        <button
-          type="button"
-          onClick={() => {
-            setShowModal(true);
-          }}
-        >
-          Click here to Show Modal
-        </button>
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            Click here to Show "DAAL Policy Limit exceeded" Modal
+          </button>
 
-        <HeadingAndActionsModal
-          showModal={showModal}
-          toggle={setShowModal}
-          heading={"Modal Title"}
-          submitHandler={onClickSuccessBtn}
-        >
-          <div>
-            <input placeholder="ARC Name" />
-            <input placeholder="Channel Name" />
-          </div>
-        </HeadingAndActionsModal>
+          <HeadingAndActionsModal
+            showModal={showModal}
+            toggle={setShowModal}
+            heading={"DAAL Policy Limit exceeded !"}
+            submitHandler={onClickSuccessBtn}
+            cancelHandler={onClickResetBtn}
+            submitButtonLabel="Save"
+          >
+            <div>
+              <input placeholder="Approved email" type="file" />
+              <input placeholder="Description" type="textarea" />
+            </div>
+          </HeadingAndActionsModal>
+        </div>
+
+
+        <br /><br /><br /><br /><br />
+
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setShowCampaignModal(true);
+            }}
+          >
+            Click here to Show "Add Campaign details" Modal
+          </button>
+
+          <HeadingAndActionsModal
+            showModal={showAddCampaignModal}
+            toggle={setShowCampaignModal}
+            heading={"Add Campaign details"}
+            submitHandler={()=>{console.log("campaign modal success "); setShowCampaignModal(false)}}
+          // cancelHandler={onClickResetBtn}
+          >
+            <div>
+              <input placeholder="Start Date" type="date" />
+              <input placeholder="End Date" type="date" />
+            </div>
+          </HeadingAndActionsModal>
+
+        </div>
+
 
         {/* <CustomModal
           title={"Are you sure?"}

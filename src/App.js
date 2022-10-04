@@ -105,7 +105,7 @@ function App() {
         style={{ margin: "auto", width: "100vw", height: "100px" }}
         onChange={(e) => console.log(e.target.value)}
       >
-        <p>Radio</p>
+        {/* <p>Radio</p> */}
         {/* <CustomRadio
           value={"Name1"}
           name="radio1"
