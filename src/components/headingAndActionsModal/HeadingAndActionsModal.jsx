@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import BaseModal from "../baseModal/BaseModal";
 
-const ModalHeader = (heading) => {
+const ModalHeader = ({ heading }) => {
   return <h2 className="modal-heading">{heading}</h2>;
 };
 
