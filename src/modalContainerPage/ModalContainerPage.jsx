@@ -4,7 +4,7 @@ import { memo, useState } from "react";
 
 import HeadingAndActionsModal from "../components/headingAndActionsModal/HeadingAndActionsModal";
 
-import "./ModalContainerPage.scss";
+// import "./ModalContainerPage.scss";
 
 // const ModalFooter = (props) => {
 //   const {
