@@ -1,55 +1,60 @@
 import { memo, useState } from "react";
 
-import BaseModal from "../components/baseModal/BaseModal";
+// import BaseModal from "../components/baseModal/BaseModal";
 
-import './ModalContainerPage.scss';
+import HeadingAndActionsModal from "../components/headingAndActionsModal/HeadingAndActionsModal";
 
+import "./ModalContainerPage.scss";
 
-const ModalFooter = (props) => {
-  const {onClickResetBtn, onClickSuccessBtn, resetButtonLabel, successButtonLabel} = props;
-  return (
-    <>
-      <div className="modal-footer-action-container">
-        <button className="reset-button" onClick={onClickResetBtn}>{resetButtonLabel ? resetButtonLabel : "Cancel"}</button>
-        <button className="success-button" onClick={onClickSuccessBtn}>{successButtonLabel ? successButtonLabel : "Confirm"}</button>
-
-      </div>
-    </>
-  )
-}
+// const ModalFooter = (props) => {
+//   const {
+//     onClickResetBtn,
+//     onClickSuccessBtn,
+//     resetButtonLabel,
+//     successButtonLabel,
+//   } = props;
+//   return (
+//     <>
+//       <div className="modal-footer-action-container">
+//         <button className="reset-button" onClick={onClickResetBtn}>
+//           {resetButtonLabel ? resetButtonLabel : "Cancel"}
+//         </button>
+//         <button className="success-button" onClick={onClickSuccessBtn}>
+//           {successButtonLabel ? successButtonLabel : "Confirm"}
+//         </button>
+//       </div>
+//     </>
+//   );
+// };
 
 const ModalBody = () => {
   return (
     <div>
       <p>Hi this is modal body. Replace with your jsx element</p>
     </div>
-  )
-}
-
+  );
+};
 
 const ModalContainerPage = () => {
   const [showModal, setShowModal] = useState(false);
 
-
   const onClickResetBtn = () => {
-    console.log('Reset Clicked === ');
+    console.log("Reset Clicked === ");
     setShowModal(false);
-  }
+  };
 
   const onClickSuccessBtn = () => {
-    console.log('success clicked');
+    console.log("success clicked");
     setShowModal(false);
-  }
+  };
 
-  const ModalHeader = () => {
-    return (
-      <>
-        <h2 className="modal-heading">{'Modal Title'}</h2>
-      </>
-    )
-  }
-
-
+  // const ModalHeader = () => {
+  //   return (
+  //     <>
+  //       <h2 className="modal-heading">{"Modal Title hi"}</h2>
+  //     </>
+  //   );
+  // };
 
   return (
     <>
@@ -62,6 +67,19 @@ const ModalContainerPage = () => {
         >
           Click here to Show Modal
         </button>
+
+        <HeadingAndActionsModal
+          showModal={showModal}
+          toggle={setShowModal}
+          heading={"Modal Title"}
+          submitHandler={onClickSuccessBtn}
+        >
+          <div>
+            <input placeholder="ARC Name" />
+            <input placeholder="Channel Name" />
+          </div>
+        </HeadingAndActionsModal>
+
         {/* <CustomModal
           title={"Are you sure?"}
           description={
@@ -79,17 +97,24 @@ const ModalContainerPage = () => {
           }}
           toggle={(state) => setShowModal(state)}
         /> */}
-        <BaseModal
+        {/* <BaseModal
           showModal={showModal}
           toggle={(state) => setShowModal(state)}
           showCloseButton={true}
           headerContent={<ModalHeader />}
-          bodyContent={<ModalBody/>}
-          footerContent={<ModalFooter onClickResetBtn={onClickResetBtn} onClickSuccessBtn={onClickSuccessBtn} resetButtonLabel={"Cancel"} successButtonLabel="Submit"/>}
-        />
+          bodyContent={<ModalBody />}
+          footerContent={
+            <ModalFooter
+              onClickResetBtn={onClickResetBtn}
+              onClickSuccessBtn={onClickSuccessBtn}
+              resetButtonLabel={"Cancel"}
+              successButtonLabel="Submit"
+            />
+          }
+        /> */}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default memo(ModalContainerPage);
