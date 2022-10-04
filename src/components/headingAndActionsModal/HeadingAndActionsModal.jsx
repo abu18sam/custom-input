@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import PropTypes from "prop-types";
 
 // import BaseModal from "../baseModal/BaseModal";
